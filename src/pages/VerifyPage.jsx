@@ -72,7 +72,7 @@ useEffect(()=>{
                 <p className='text-center text-sm'>Lorem Ipsum is simply dummy text</p>
 
                    {/* Company Email Otp Field */}
-                   <div className="flex items-center border border-gray-300 rounded-md p-2 w-full max-w-sm bg-inputBox mt-6 mx-auto">
+                   <div className={`flex items-center border border-gray-300 rounded-md p-2 w-full max-w-sm bg-inputBox mt-6 mx-auto ${verificationStatus.emailVerified ? 'bg-green-200' : ''}`}>
                     <EnvelopeSimple className="text-inputText mr-2" /> {/* Icon */}
                     <input
                         type="text"
@@ -90,7 +90,7 @@ useEffect(()=>{
                     >Verify</button>
 
                 {/* Phone Field */}
-                <div className="flex items-center border border-gray-300 rounded-md p-2 w-full max-w-sm bg-inputBox mt-6 mx-auto">
+                <div className={`flex items-center border border-gray-300 rounded-md p-2 w-full max-w-sm bg-inputBox mt-6 mx-auto ${verificationStatus.mobileVerified ? 'bg-green-200' : ''}`}>
                     <Phone className="text-inputText mr-2" /> {/* Icon */}
                     <input
                         type="text"
