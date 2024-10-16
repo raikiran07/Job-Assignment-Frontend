@@ -81,7 +81,7 @@ useEffect(()=>{
                         value={emailOtp}
                         onChange={(e)=>setEmailOtp(e.target.value)}
                         required
-                        readOnly={verificationStatus.emailVerified ? 'true' : 'false'}
+                       
                     />
                     </div>
                 
@@ -100,7 +100,7 @@ useEffect(()=>{
                         value={mobileOtp}
                         onChange={(e)=>setMobileOtp(e.target.value)}
                         required
-                        readOnly={verificationStatus.mobileVerified ? 'true' : 'false'}
+                        
                     />
                     </div>
 
