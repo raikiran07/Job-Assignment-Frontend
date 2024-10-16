@@ -59,7 +59,7 @@ const postJob = async (job) => {
 
 const mypostedJobs = async () => {
     console.log("hello from posted jobs")
-    const res = await axios.get(`${import.meta.env.VITE_BASE_URL_BACKEND_JOB}/postedjobs`,{},{
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL_BACKEND_JOB}/postedjobs`,{
         withCredentials:true
     })
     return res
