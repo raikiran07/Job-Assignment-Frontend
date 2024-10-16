@@ -36,7 +36,7 @@ const MyPostedJobs = () => {
         <Sidebar/>
         <div className="main-container w-[90%] border h-[100vh] px-8 py-6">
            <h1>Hello From Posted Jobs</h1>
-           <div className="job-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 place-items-start lg:gap-1">
+           <div className="job-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mt-6">
             {
               jobs.map(job=>{
                 return <div key={job._id} className='max-w-56 border p-2 rounded-md bg-inputBox'>
