@@ -14,13 +14,24 @@ const MyPostedJobs = () => {
 
     const fetchData = async () => {
         const res = await mypostedJobs()
-        console.log(res)
+        setJobs(res.data)
+        
     }
   return (
      <div className='flex items-start justify-center'>
         <Sidebar/>
         <div className="main-container w-[90%] border h-[100vh] px-8 py-6">
            <h1>Hello From Posted Jobs</h1>
+           <div className="job-container">
+            {
+              jobs.map(job=>{
+                return <div key={job._id}>
+                  <h2>{job.title}</h2>
+                  <p>{job.description}</p>
+                </div>
+              })
+            }
+           </div>
         </div>
 
 
