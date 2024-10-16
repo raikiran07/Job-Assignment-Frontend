@@ -77,10 +77,11 @@ useEffect(()=>{
                     <input
                         type="text"
                         placeholder="Email OTP"
-                        className="w-full outline-none placeholder:text-inputText text-inputText bg-inputBox font-light"
+                        className={`w-full outline-none placeholder:text-inputText text-inputText bg-inputBox font-light ${verificationStatus.emailVerified ? 'bg-green-200' : ''}`}
                         value={emailOtp}
                         onChange={(e)=>setEmailOtp(e.target.value)}
                         required
+                        readOnly={verificationStatus.emailVerified ? 'true' : 'false'}
                     />
                     </div>
                 
@@ -94,11 +95,12 @@ useEffect(()=>{
                     <input
                         type="text"
                         placeholder="Mobile OTP"
-                        className="w-full outline-none placeholder:text-inputText text-inputText bg-inputBox font-light"
+                        className={`w-full outline-none placeholder:text-inputText text-inputText bg-inputBox font-light ${verificationStatus.mobileVerified ? 'bg-green-200' : ''}`}
                         name="phoneNo"
                         value={mobileOtp}
                         onChange={(e)=>setMobileOtp(e.target.value)}
                         required
+                        readOnly={verificationStatus.mobileVerified ? 'true' : 'false'}
                     />
                     </div>
 

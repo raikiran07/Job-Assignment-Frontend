@@ -27,6 +27,7 @@ const handleLogin = async (e) => {
             name:res.data.name,
             userId:res.data.userId
         })
+        alert("login successful")
         navigate('/home')
         
     }

@@ -41,6 +41,7 @@ const handleSubmit = async (e)=> {
         // calling register user api
         await registerUser(user)
         localStorage.setItem('email',user.email)
+        alert("registration successfull")
         navigate('/verify')
 
         
