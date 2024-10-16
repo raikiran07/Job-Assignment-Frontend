@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../utils/api';
 import { useContext } from 'react';
 import { userContext } from '../userContext/UserContext';
+import { Password } from '@phosphor-icons/react';
 
 
 const Login = () => {
@@ -61,7 +62,7 @@ const handleLogin = async (e) => {
 
                 {/* Phone Field */}
                 <div className="flex items-center border border-gray-300 rounded-md p-2 w-full max-w-sm bg-inputBox mt-6 mx-auto">
-                    <Phone className="text-inputText mr-2" /> {/* Icon */}
+                    <Password className="text-inputText mr-2" /> {/* Icon */}
                     <input
                         type="password"
                         placeholder="Password"

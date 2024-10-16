@@ -108,7 +108,7 @@ const handleChange = (e) => {
                         <label htmlFor="candidate" className='mr-6 text-xl'>Add Candidate</label>
                         </td>
                         <td>
-                        <input type="text" name="candidates" value={candidates} onChange={(e)=>setCandidates(e.target.value)}
+                        <input type="text" name="candidates" placeholder='Enter emails separated by comma' value={candidates} onChange={(e)=>setCandidates(e.target.value)}
                 className='bg-transparent rounded-md border border-ternary p-1 focus:outline-ternary focus:border-ternary placeholder:font-light'
                  />
                         </td>
