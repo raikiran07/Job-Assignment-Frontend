@@ -6,10 +6,7 @@ const MyPostedJobs = () => {
     const [jobs,setJobs] = useState([])
     useEffect(()=>{
         fetchData()
-        console.log(jobs)
-        if(jobs.length > 1){
-          console.log("jobs is greater")
-        }
+        console.log("what is this")
         return ()=>{
 
         }
@@ -17,6 +14,7 @@ const MyPostedJobs = () => {
 
     const fetchData = async () => {
         const res = await mypostedJobs()
+        console.log(res.data)
         setJobs(res.data)
         
     }
