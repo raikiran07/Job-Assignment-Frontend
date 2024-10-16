@@ -4,6 +4,7 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import { useState } from 'react';
 import { verifyEmailOtp, verifyMobileOtp } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
+import { IoCheckmarkCircle } from "react-icons/io5";
 
 
 const VerifyPage = () => {
@@ -83,6 +84,9 @@ useEffect(()=>{
                         required
                        
                     />
+                    {
+                        verificationStatus.emailVerified && <IoCheckmarkCircle fill='green' />
+                    }
                     </div>
                 
                     <button className='bg-ternary w-full py-1 rounded-md text-white my-4 max-w-sm block mx-auto'
@@ -102,6 +106,9 @@ useEffect(()=>{
                         required
                         
                     />
+                     {
+                        verificationStatus.mobileVerified && <IoCheckmarkCircle fill='green' />
+                    }
                     </div>
 
                     <button className='bg-ternary w-full py-1 rounded-md text-white my-4 max-w-sm block mx-auto'
