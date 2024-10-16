@@ -6,8 +6,10 @@ import { FaSuitcase } from "react-icons/fa";
 import { logoutUser } from '../utils/api';
 import { useContext } from 'react';
 import { userContext } from '../userContext/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navigate = useNavigate()
     const {setUser,user} = useContext(userContext)
     console.log(user)
 
@@ -16,8 +18,9 @@ const Sidebar = () => {
             if(res.status==200){
                 setUser(null)
                 alert("User Logout Successful")
+                navigate('/login')
             }
-            console.log(res)
+            
     }
 
   return (

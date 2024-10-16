@@ -22,6 +22,7 @@ const handleLogin = async (e) => {
     const res = await loginUser({email,password})
     console.log(res)
     if(res.status==200){
+       
         setUser({
             name:res.data.name,
             userId:res.data.userId
