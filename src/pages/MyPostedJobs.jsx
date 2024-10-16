@@ -6,7 +6,7 @@ const MyPostedJobs = () => {
     const [jobs,setJobs] = useState([])
     useEffect(()=>{
         fetchData()
-
+        console.log(jobs)
         return ()=>{
 
         }
