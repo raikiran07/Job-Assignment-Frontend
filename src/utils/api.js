@@ -36,7 +36,7 @@ const verifyMobileOtp = async (otp,email) => {
 
 const loginUser = async (user) => {
     try {
-        const res = await axios.post(`https://job-assignment-backend.onrender.com/api/v1/auth/user/login`,user,{
+        const res = await axios.post(`${import.meta.env.VITE_BASE_URL_BACKEND_USER}/login`,user,{
             withCredentials:true
         })
         return res
@@ -74,5 +74,13 @@ const logoutUser = async () => {
 }
 
 
+const deleteJob = async (jobId) => {
+    const res = await axios.delete(`${import.meta.env.VITE_BASE_URL_BACKEND_JOB}/${jobId}`,{
+        withCredentials:true
+    })
+    return res
+}
 
-export {registerUser,verifyEmailOtp,verifyMobileOtp,loginUser,postJob,mypostedJobs,logoutUser}
+
+
+export {registerUser,verifyEmailOtp,verifyMobileOtp,loginUser,postJob,mypostedJobs,logoutUser,deleteJob}
