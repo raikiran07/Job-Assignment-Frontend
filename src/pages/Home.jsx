@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import { userContext } from '../userContext/userContext'
+import { userContext } from '../userContext/UserContext';
 
 const Home = () => {
 const navigate = useNavigate()

@@ -6,7 +6,7 @@ import { verifyEmailOtp, verifyMobileOtp } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../utils/api';
 import { useContext } from 'react';
-import { userContext } from '../userContext/userContext';
+import { userContext } from '../userContext/UserContext';
 
 
 const Login = () => {

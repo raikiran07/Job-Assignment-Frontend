@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { postJob } from '../utils/api'
 import axios from 'axios'
-import { userContext } from '../userContext/userContext'
+import { userContext } from '../userContext/UserContext';
 
 const CreateJob = () => {
     const navigate = useNavigate()
