@@ -7,6 +7,9 @@ const MyPostedJobs = () => {
     useEffect(()=>{
         fetchData()
         console.log(jobs)
+        if(jobs.length > 1){
+          console.log("jobs is greater")
+        }
         return ()=>{
 
         }
