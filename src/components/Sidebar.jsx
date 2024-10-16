@@ -5,7 +5,7 @@ import { IoMdHome } from "react-icons/io";
 import { FaSuitcase } from "react-icons/fa";
 import { logoutUser } from '../utils/api';
 import { useContext } from 'react';
-import { userContext } from '../userContext/userContext';
+import { userContext } from '../userContext/UserContext';
 
 const Sidebar = () => {
     const {setUser,user} = useContext(userContext)

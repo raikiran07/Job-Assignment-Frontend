@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../assets/logo.png'
-import { userContext } from '../userContext/userContext'
+import { userContext } from '../userContext/UserContext'
 import { useContext } from 'react'
 import DownArrow from '../assets/down-triangle.png'
 
