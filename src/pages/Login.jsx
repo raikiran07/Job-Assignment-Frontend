@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../utils/api';
 import { useContext } from 'react';
 import { userContext } from '../userContext/UserContext';
+import LoadingGIF from '../assets/loading.gif'
 
 
 
@@ -17,21 +18,42 @@ const {setUser} = useContext(userContext)
 const navigate = useNavigate()
  const [email,setEmail] = useState('')
  const [password,setPassword] = useState('')
+ const [loading,setLoading] = useState(false)
+ const [emailError,setEmailError] = useState('')
+ const [passwordErr,setPasswordErr] = useState('')
  
 const handleLogin = async (e) => {
-    e.preventDefault()
-    const res = await loginUser({email,password})
-    console.log(res)
-    if(res.status==200){
-       
-        setUser({
-            name:res.data.name,
-            userId:res.data.userId
-        })
-        alert("login successful")
-        navigate('/home')
+
+  
+        setLoading(true)
+        e.preventDefault()
+        const res = await loginUser({email,password})
         
-    }
+       
+       
+        if(res.status==200){
+           
+            setUser({
+                name:res.data.name,
+                userId:res.data.userId
+            })
+            setLoading(false)
+            alert("login successful")
+            navigate('/home')
+            
+        }
+
+        if(res.status==400){
+            setLoading(false)
+            const {response} = res
+            const {email:emailErr,password:passwordErr} = response.data
+            setEmailError(emailErr)
+            setPasswordErr(passwordErr)
+            console.log(response)
+        }
+        
+    
+   
 }
 
 
@@ -53,10 +75,18 @@ const handleLogin = async (e) => {
                         placeholder="Company Email"
                         className="w-full outline-none placeholder:text-inputText text-inputText bg-inputBox font-light"
                         value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={(e)=>{
+                            setEmailError('')
+                            setEmail(e.target.value)
+                        }}
                         required
                     />
+                   
+                   
                     </div>
+                    {
+                        emailError && <p className='w-full max-w-sm mx-auto p-1 bg-red-200 rounded-md mt-1 text-red-400 animate-slide-in '>{emailError}</p>
+                    }
                 
                    
 
@@ -68,14 +98,27 @@ const handleLogin = async (e) => {
                         placeholder="Password"
                         className="w-full outline-none placeholder:text-inputText text-inputText bg-inputBox font-light"
                         value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
+                        onChange={(e)=>{
+                            setPasswordErr('')
+                            setPassword(e.target.value)
+                        }}
                         required
                     />
+               
+                   
                     </div>
+                    {
+                        passwordErr && <p className='w-full max-w-sm mx-auto p-1 rounded-md bg-red-200 text-red-400 mt-1 animate-slide-in'>{passwordErr}</p>
+                    }
 
-                    <button className='bg-ternary w-full py-1 rounded-md text-white my-4 max-w-sm block mx-auto'
+                    <button className='bg-ternary w-full py-1 rounded-md text-white my-4 max-w-sm mx-auto flex items-center justify-center'
                    type="submit"
-                    >Login</button>
+                    >
+                        {
+                            loading ? <img src={LoadingGIF}  className='max-w-5 mix-blend-multiply' alt="loading" /> : 
+                            "Login"
+                        }
+                    </button>
             </form>
         </div>
 

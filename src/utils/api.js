@@ -39,9 +39,10 @@ const loginUser = async (user) => {
         const res = await axios.post(`${import.meta.env.VITE_BASE_URL_BACKEND_USER}/login`,user,{
             withCredentials:true
         })
+        
         return res
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 

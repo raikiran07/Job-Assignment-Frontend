@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom'
 import { postJob } from '../utils/api'
 import axios from 'axios'
 import { userContext } from '../userContext/UserContext';
+import LoadingGIF from '../assets/loading.gif'
 
 const CreateJob = () => {
     const navigate = useNavigate()
     const [candidates,setCandidates] = useState('')
     const {user} = useContext(userContext)
+    const [loading,setLoading] = useState(false)
 
     const [job,setJob] = useState({
         title:'',
@@ -21,10 +23,11 @@ const CreateJob = () => {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     const candidateArr = candidates.split(',')
     job.candidates = candidateArr
     const res = await postJob(job);
-
+    setLoading(false)
     if(res?.status==201){
         const msg = res?.data?.msg
         alert(msg)
@@ -126,7 +129,13 @@ const handleChange = (e) => {
                     <tr>
                         <td></td>
                         <td>
-                             <button className='bg-ternary max-w-content py-1 rounded-md text-white mb-4 w-full max-w-sm block mx-auto mt-8' type="submit">Send</button>
+                             <button className='bg-ternary max-w-content py-1 rounded-md text-white mb-4 w-full max-w-sm  mx-auto mt-8 flex items-center justify-center' type="submit">
+                                {
+                                    loading ? <img src={LoadingGIF} alt="loading"
+                                    className='max-w-5 mix-blend-multiply'
+                                     /> : "Post"
+                                }
+                             </button>
                         </td>
                     </tr>
                 </table>

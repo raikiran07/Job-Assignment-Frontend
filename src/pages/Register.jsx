@@ -4,10 +4,12 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import { useState } from 'react';
 import { registerUser } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
+import LoadingGIF from '../assets/loading.gif'
 
 
 const Register = () => {
     const navigate = useNavigate()
+    const [loading,setLoading] = useState(false)
     
 
     const [user,setUser] = useState({
@@ -35,6 +37,7 @@ const handleChange = (e) => {
 
 //   handle form submit
 const handleSubmit = async (e)=> {
+    setLoading(true)
     try {
         e.preventDefault()
         
@@ -42,10 +45,12 @@ const handleSubmit = async (e)=> {
         await registerUser(user)
         localStorage.setItem('email',user.email)
         alert("registration successfull")
+        setLoading(false)
         navigate('/verify')
 
         
     } catch (error) {
+        setLoading(false)
         console.log(error)
     }
 }
@@ -147,7 +152,12 @@ const handleSubmit = async (e)=> {
 
                     <p className='text-xs text-center my-4 font-bold text-primary'>By clicking on proceed you wil accept our <br></br> <span className='text-ternary'>Terms</span> & <span className='text-ternary'>Conditions</span></p>
 
-                    <button className='bg-ternary max-w-content py-1 rounded-md text-white mb-4 w-full max-w-sm block mx-auto' type="submit">Proceed</button>
+                    <button className='bg-ternary max-w-content py-1 rounded-md text-white mb-4 w-full max-w-sm block mx-auto' type="submit">
+                    {
+                        loading ? <img src={LoadingGIF} alt="loading" />
+                        : "Proceed"
+                    }
+                    </button>
             </form>
         </div>
 
